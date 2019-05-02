@@ -6,13 +6,15 @@
 
 ### SQLite 数据库
 
-- 创建表结构
-
-```bash
-```
-
 - 运行 python 脚本
 
+```python
+# 创建默认数据库文件
+python3 manage.py
+
+# 自定义数据库文件名称
+python3 manage.py -n default.db
+```
 
 ## 相关参考
 
