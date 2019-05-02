@@ -18,15 +18,15 @@ def work(name):
 
     dataPath = os.path.join(os.getcwd(), 'data')
 
-    # ci = os.path.join(dataPath, 'ci')
-    # from src.ci_song_author import make_db as ci_song_author_make_db
-    # ci_song_author_make_db(db, ci)
-    # from src.ci_song import make_db as ci_song_data_make_db
-    # ci_song_data_make_db(db, ci)
+    ci = os.path.join(dataPath, 'ci')
+    from src.ci_song_author import make_db as ci_song_author_make_db
+    ci_song_author_make_db(db, ci)
+    from src.ci_song import make_db as ci_song_data_make_db
+    ci_song_data_make_db(db, ci)
 
-    # lunyu = os.path.join(dataPath, 'lunyu')
-    # from src.lunyu import make_db as lunyu_make_db
-    # lunyu_make_db(db, lunyu)
+    lunyu = os.path.join(dataPath, 'lunyu')
+    from src.lunyu import make_db as lunyu_make_db
+    lunyu_make_db(db, lunyu)
 
     shi = os.path.join(dataPath, 'json')
     from src.shi_tangsong_author import make_db as shi_tangsong_author_make_db
