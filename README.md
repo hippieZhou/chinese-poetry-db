@@ -16,6 +16,15 @@ python3 manage.py
 python3 manage.py -n default.db
 ```
 
+# 支持的数据库类型
+
+- ~~sqlite~~
+- mysql
+
+## 注意事项
+
+由于数据量过大，所以运行时间较长，还请耐心等待！
+
 ## 相关参考
 
 - [chinese-poetry](https://github.com/chinese-poetry/chinese-poetry)
