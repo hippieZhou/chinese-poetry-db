@@ -1,6 +1,7 @@
 import argparse
 import sqlite3
 import os
+import time
 
 
 def usage():
@@ -38,6 +39,10 @@ def work(name):
     from src.shijing import make_db as shijing_make_db
     shijing_make_db(db, shijing)
 
+    sishuwujing = os.path.join(dataPath, 'sishuwujing')
+    from src.sishuwujing import make_db as sishuwujing_make_db
+    sishuwujing_make_db(db, sishuwujing)
+
 
 def main():
     args = usage()
@@ -45,8 +50,10 @@ def main():
     if name is None:
         print('数据库名称不能为空')
         sys.exit()
-
+    s_time = time.time()
     work(name)
+    e_time = time.time()
+    print('所有数据导入完毕，总耗时：{0} 秒'.format(e_time-s_time))
 
 
 if __name__ == "__main__":

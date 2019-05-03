@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS "shi_tangsong" (
             save_data(cur, shi_file)
         conn.commit()
         print('诗-唐宋 数据处理完毕.')
-        pass
     except Exception as e:
         print(e)
         conn.rollback()
@@ -42,7 +41,7 @@ CREATE TABLE IF NOT EXISTS "shi_tangsong" (
 
 def save_data(cur, file):
     if os.path.exists(file):
-        print(file)
+        print('\t', file)
         with open(file, 'r', encoding='UTF-8') as f:
             shi_data = json.load(f)
             items = [(str(item['author']), str(item['paragraphs']), str(item['strains']),
