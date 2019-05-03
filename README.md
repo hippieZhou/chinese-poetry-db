@@ -30,7 +30,7 @@ python 3.x 即可
 python3 manage.py
 
 # 自定义数据库文件名称
-python3 manage.py -n default.db
+python3 manage.py default.db
 ```
 
 #### MySql
