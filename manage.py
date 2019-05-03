@@ -4,15 +4,39 @@ import os
 import time
 
 
-def usage():
+VERSION = "VERSION 1.0.0"
+DOMAIN = "http://hippiezhou.fun"
+
+
+def get_parser():
     parser = argparse.ArgumentParser()
-    parser.description = '一键生成古诗词数据库文件'
-    parser.add_argument("-n", nargs='?', help="数据库名称",
-                        default="default.sqlite3")
-    return parser.parse_args()
+    parser.description = 'Create DB File CLI Tools.'
+    parser.add_argument('name', metavar="name", type=str, nargs="*",
+                        help='set db name, the default name = default.sqlite3.')
+    parser.add_argument('-v', '--version', action='store_true',
+                        help='version information.')
+    return parser
 
 
-def work(name):
+def command_line_runner():
+    parser = get_parser()
+    args = vars(parser.parse_args())
+    # print(args)
+    if args['version']:
+        print(VERSION)
+        return
+    name = 'default.sqlite3'
+    if len(args['name']) > 0:
+        name = args['name'][0]
+
+    s_time = time.time()
+    work(name)
+    e_time = time.time()
+    print('所有数据导入完毕，总耗时：{0} 秒'.format(e_time-s_time))
+    print('数据库位置：{0}'.format(os.path.join(os.getcwd(), name)))
+
+
+def work(name) -> str:
     db = os.path.join(os.getcwd(), name)
     if os.path.exists(db):
         os.remove(db)
@@ -45,15 +69,7 @@ def work(name):
 
 
 def main():
-    args = usage()
-    name = args.n
-    if name is None:
-        print('数据库名称不能为空')
-        sys.exit()
-    s_time = time.time()
-    work(name)
-    e_time = time.time()
-    print('所有数据导入完毕，总耗时：{0} 秒'.format(e_time-s_time))
+    command_line_runner()
 
 
 if __name__ == "__main__":
