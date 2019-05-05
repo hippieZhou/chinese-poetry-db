@@ -36,7 +36,7 @@ def command_line_runner():
     print('数据库位置：{0}'.format(os.path.join(os.getcwd(), name)))
 
 
-def work(name) -> str:
+def work(name):
     db = os.path.join(os.getcwd(), name)
     if os.path.exists(db):
         os.remove(db)
